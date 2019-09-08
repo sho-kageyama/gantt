@@ -1,11 +1,16 @@
+*{
+    margin:0;
+    padding:0;
+}
 #testgantt {
     font-family: 'hiragino kaku gothic pro', meiryo;
     background-color: #333;
+    width:75%;
     border-radius: 10px;
     padding: 10px;
 }
 
-#testgantt span[id *= "dateTest"] {
+#testgantt span[id *= "date"] {
     font-size: 14px;
     font-weight: 600;
     color: azure;
@@ -26,6 +31,7 @@
 #testgantt .event span.bubble, .nav.event { background-color: #8470ff; }
 #testgantt .absence span.bubble, .nav.absence { background-color: #ffc0cb; }
 #testgantt .other span.bubble, .nav.other { background-color: #a9a9a9; }
+#testgantt .milestone .bubble { background-color: navy; }
 
 #testgantt .scale {
     height: 100%;
@@ -37,27 +43,27 @@
     float: left;
     /* border-leftの線の太さを考慮して60 - 1する */
     text-align: center;
-    background-color: #333;
-    color: #979796;
+    background-color: none;
+    color: white;
     font-size: 14px;
     font-weight: lighter;
-    border-left: 1px dashed rgba(250,250,250,0.2);
+    border-left: 1px dashed rgba(255,255,255,0.2);
     height: 100%
 }
 
 #testgantt .data {
-    font-size: 14px;
+    font-size: 12px;
     padding: 0;
-    margin: 30px 0 0 0;
+    margin: 20px 0 0 0;
     text-align: left;
     list-style-type: none;
-    color: rgba(250,250,250,0.8);
+    color: rgba(255,255,255,0.6);
 }
 
 #testgantt .data li {
-    margin: 0 0 3px 0;
-    line-height: 20px;
-    height: 25px;
+    margin: 0 0 2px 0;
+    line-height: 30px;
+    height: 20px;
     display: block;
     clear: both;
     position: relative;
@@ -65,36 +71,36 @@
 }
 
 #testgantt .data li .time {
-    color: #b5b5b5;
+    color: white;
 }
 
 #testgantt .data li .label {
     font-weight: lighter;
     padding-left: 5px;
-    line-height: 10px;
-    color: #979796;
+    line-height: 15px;
+    color: white;
     white-space: nowrap
 }
 
 #testgantt div:not(.milestone) .bubble {
-    height: 10px;
+    height: 15px;
     display: block;
     float: left;
     position: relative;
     top: 7px;
     border-radius: 4px;
-    margin: 0 3px 0 0;
+    margin: 0 5px 0 0;
     opacity: 0.7;
 }
 
-#testgantt .milestone .bubble {
-    border-style: solid;
-    border-width: 0 15px 22px 15px;
-    border-color: transparent transparent #fc3232 transparent;
-    opacity: 0.7;
-    transform: translateY(-50%) translateX(-50%);
-    -webkit-transform: translateY(-50%) translateX(-50%);
-}
+/*#testgantt .milestone .bubble {*/
+/*    border-style: solid;*/
+/*    border-width: 0 15px 22px 15px;*/
+/*    border-color: transparent transparent #fc3232 transparent;*/
+/*    opacity: 0.7;*/
+/*    transform: translateY(-50%) translateX(-50%);*/
+/*    -webkit-transform: translateY(-50%) translateX(-50%);*/
+/*}*/
 
 #testgantt li:hover {
     filter:alpha(opacity=80);

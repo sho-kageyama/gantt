@@ -1,77 +1,77 @@
 let task = [
-    // 1日目
+    // 1ヶ月目
     [
-     // 1日目のタスクその1
+     // 1ヶ月目のタスクその1
      {
-     name: "勉強会",
-     startTime: 1000,
-     endTime: 1045,
+     name: "Java基礎15問",
+     startTime: 1,
+     endTime: 3,
      category: "event"
      },
-     // 1日目のタスクその2
+     // 1ヶ月目のタスクその2
      {
-     name: "企画会議",
-     startTime: 1300,
-     endTime: 1340,
+     name: "じゃんけん課題",
+     startTime: 4,
+     endTime: 6,
      category: "meeting"
      },
-     // 1日目のタスクその3
+     // 1ヶ月目のタスクその3
      {
-     name: "アプリ開発",
-     startTime: 1400,
-     endTime: 1730,
+     name: "電卓課題",
+     startTime: 6,
+     endTime: 8,
      category: "dev"
      },
-     // 1日目のタスクその4
+     // 1ヶ月目のタスクその4
      {
-     name: "クラウド研修応募締切",
-     startTime: 1500,
-     endTime: 1500,
+     name: "SQL基礎課題",
+     startTime: 9,
+     endTime: 10,
      category: "milestone"
      },
-     // 1日目のタスクその5
+     //1ヶ月目のタスクその5
      {
-     name: "課長不在",
-     startTime: 1300,
-     endTime: 1730,
+     name: "SpringMVC演習",
+     startTime: 11,
+     endTime: 13,
      category: "absence"
      },
-     // 1日目のタスクその6 時系列順である必要はありません
+     // 1ヶ月目のタスクその6
      {
-     name: "ビジュアルコミュニケーションセミナー",
-     startTime: 1100,
-     endTime: 1200,
+     name: "施設予約管理システム",
+     startTime: 14,
+     endTime: 28,
      category: "lecture"
      },
-     // 1日目のタスクその7
+     // 1ヶ月目のタスクその7
      {
-     name: "部のランチ会",
-     startTime: 1200,
-     endTime: 1300,
+     name: "SQL中級課題",
+     startTime: 19,
+     endTime: 21,
      category: "other"
      },
      ],
-    // 2日目 タスクがない場合は配列はからのまま
+    // 2ヶ月目 タスクがない場合は配列はからのまま
     [],
-    // 3日目
+    // 3ヶ月目
     [
      {
      name: "品川出張",
-     startTime: 1100,
-     endTime: 1730,
+     startTime: 11,
+     endTime: 17,
      category: "other"
      },
      {
      name: "A社と打ち合わせ",
-     startTime: 1300,
-     endTime: 1500,
+     startTime: 13,
+     endTime: 15,
      category: "meeting"
      },
      {
      name: "提案書締切",
-     startTime: 1700,
-     endTime: 1700,
+     startTime: 10,
+     endTime: 17,
      category: "milestone"
      }
      ]
-    ]
+   ]

@@ -1,13 +1,16 @@
 // 開始する日付を入力してください
+let now = new Date();
+let days = new Date(now.getFullYear(),now.getMonth() + 1,0).getDate();
+
 let startDay = {
-    year: 2019,
-    month: 9,
-    day : 8
-    }
+    year: now.getFullYear(),
+    month: now.getMonth()+1,
+    day : days
+}
     
     // 始業時間と就業時間を入力してください(30分単位で入力してください)
-    let openingTime = 900;
-    let closingTime = 1730;
+    let openingTime = 1;
+    let closingTime = days;
     
     
     // tasks.jsに配列が存在する日の回数分、チャートを表示するdaily-area要素を描画する
@@ -30,30 +33,25 @@ let startDay = {
     
     // 始業時間と就業時間から、30分区切りでhh:mmというフォーマットに変換する
     const setTimeScale = (open, close) => {
-        openMin = convertTimesToMins(open);
-        closeMin = convertTimesToMins(close);
-        workingMin = closeMin - openMin;
+        closeDay = startDay.day;
         timeScale = [];
-        scaleDiv =  workingMin / 30;
-        for(let i=0; i <= scaleDiv; i++) {
-            timeScale[i] = String((openMin + (i * 30))/60);
-            if(timeScale[i].slice(-2) === ".5") {
-                timeScale[i] = timeScale[i].replace(".5", ":30");
-            } else {
-                timeScale[i] = timeScale[i] + ":00";
-            }
+        for(let i=0; i < closeDay; i++) {
+            let day = Number(i) + 1;
+            timeScale[i] = String(day);
         }
     }
     
     // #easygantt要素の幅を取得して、scaleを均等に分割する
     const setTimeScaleWidth = () => {
-        clientWidth = document.getElementById('testgantt').clientWidth;
-        let singleTimeScaleWidth =  clientWidth / (this.scaleDiv + 1) - 9;
+        clientWidth = document.getElementById('testgantt').clientWidth-70;
+        console.log('gantWidth :' + clientWidth);
+        let singleTimeScaleWidth =  clientWidth / (startDay.day);
         return singleTimeScaleWidth;
     }
     
     // setTimeScaleWidthで取得したひとつあたりのtimeScaleの値に応じたwidthで、時間軸を描画する
     const scaleDOM = (i, width) => {
+        console.log('scaleDOM width :' + width +' : i'+ i);
         let scale = document.querySelectorAll(".scale");
         scale[i].insertAdjacentHTML('beforeend', '<div class="hr">')
         for(let j=0; j<timeScale.length; j++) {
@@ -65,47 +63,51 @@ let startDay = {
     
     // startDayの値をmm/dd(w)のフォーマットにして描画する
     const dateDOM = (i) => {
-        let taskDay = new Date(startDay.year, startDay.month - 1, startDay.day + i);
-        let m = taskDay.getMonth() + 1;
+        let taskDay = new Date(startDay.year, startDay.month -1, startDay.day + i);
+        let y = taskDay.getFullYear();
+        let m = taskDay.getMonth()+1;
         let d = taskDay.getDate();
         let w = taskDay.getDay();
         let weekNames = ['日', '月', '火', '水', '木', '金', '土'];
-        document.getElementById("date" + [i]).innerText = `${m}/${d}(${weekNames[w%7]})`;
+        document.getElementById("date" + [i]).innerText = `${y}年${m}月`;
     }
     
     // hhmmのフォーマットの時間を分数にして返す
     const convertTimesToMins = (time) => {
-        let hour = parseInt(String(time).slice(0, -2));
-        let min = parseInt(String(time).slice(-2));
+        let hour = parseInt(String(time));
+        let min = parseInt(String(time));
         let sumMins = hour * 60 + min;
         return sumMins;
     }
     
     // tasks.jsの配列をもとに、チャートにバブルを描画する
     const bubbleDOM = (i, j, start, duration, element, width) => {
+        console.log('i :' + i+ '/'+'j :' + j +'/'+'start :' + start+'/'+'duration :' + duration+'/'+'element :' + element+'/'+'width :' + width);
         // 1分あたりのバブルの長さ[px]
-        let widthAboutMin = (width+1)/30;
-        // 始業からタスク開始までの分数
-        let startTaskMin = start - convertTimesToMins(openingTime);
+        let widthAboutMin = width;
+        console.log('長さ :' +widthAboutMin);
+        // 始業からタスク開始までの日数
+        let startTaskMin = start - openingTime;
+        console.log('分数　:' + startTaskMin);
         element.insertAdjacentHTML('beforeend', `
                                    <li><div class="${task[i][j].category}">
                                    <span class="bubble" style="margin-left: ${startTaskMin * widthAboutMin}px;
                                    width: ${duration * widthAboutMin}px;"></span>
-                                   ${bubbleData(i, j)}
-                                   </div></li>
+                                   ${bubbleData(i,j)}</div></li>
                                    `);
     }
     
     // task.jsの配列のデータを、「hh:mm-hh:mm タスクの説明」のフォーマットにして返す
     const bubbleData = (i, j) => {
-        if(task[i][j].category !== "milestone") {
-            data = `<span class="time">
-            ${String(task[i][j].startTime).slice(0, -2)}:${String(task[i][j].startTime).slice(-2)}
-            -${String(task[i][j].endTime).slice(0, -2)}:${String(task[i][j].endTime).slice(-2)}
-            </span>
+        if(task[i][j].category !== "milest") {
+//            let daytime = task[i][j].endTime - task[i][j].startTime + 1;
+//            data = `<span class="time">
+//            ${String(daytime)}日間
+//            </span>
+            data = `
             <span class="bubble-span">${task[i][j].name}</span>`;
         } else {
-            data = `<span class="time">${String(task[i][j].startTime).slice(0, -2)}:${String(task[i][j].startTime).slice(-2)}</span>
+            data = `<span class="time">${String(task[i][j].startTime)}</span>
             <span class="milestone-span">${task[i][j].name}</span>`;
         }
         return data
@@ -124,8 +126,8 @@ let startDay = {
                 startTimeToMins[i] = [], endTimeToMins[i] = [], durationTimes[i] = [];
                 for(let j=0; j < Object.keys(task[i]).length; j++) {
                     bubbleDOM(i, j,
-                              convertTimesToMins(task[i][j].startTime),
-                              (convertTimesToMins(task[i][j].endTime) - convertTimesToMins(task[i][j].startTime)),
+                              task[i][j].startTime,
+                              (task[i][j].endTime+1 - task[i][j].startTime),
                               createBubble,
                               timeScaleWidth
                               );
