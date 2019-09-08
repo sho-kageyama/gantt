@@ -4,20 +4,22 @@
 }
 #testgantt {
     font-family: 'hiragino kaku gothic pro', meiryo;
-    background-color: #333;
     width:75%;
+    background:rgba(255,255,255,0.4);
     border-radius: 10px;
     padding: 10px;
+    border:dashed;
+    border-color:rgba(0,0,0,0.6);
 }
 
 #testgantt span[id *= "date"] {
     font-size: 14px;
     font-weight: 600;
-    color: azure;
+    color: #3e3e3e;
 }
 
 #testgantt .daily-area {
-    border-top: 0.1px solid #333;
+    border-top: 0.1px solid black;
     position: relative;
 }
 
@@ -44,10 +46,10 @@
     /* border-leftの線の太さを考慮して60 - 1する */
     text-align: center;
     background-color: none;
-    color: white;
+    color: #3e3e3e;
     font-size: 14px;
     font-weight: lighter;
-    border-left: 1px dashed rgba(255,255,255,0.2);
+    border-left: 1px dashed rgba(32,47,85,0.8);
     height: 100%
 }
 
@@ -57,7 +59,8 @@
     margin: 20px 0 0 0;
     text-align: left;
     list-style-type: none;
-    color: rgba(255,255,255,0.6);
+    color: black;
+    text-shadow:0 0 8px #7e7e7e, 0 0 15px #7e7e7e;
 }
 
 #testgantt .data li {
@@ -88,9 +91,10 @@
     float: left;
     position: relative;
     top: 7px;
-    border-radius: 4px;
+    border:1px solid black;
+    border-radius: 1px;
     margin: 0 5px 0 0;
-    opacity: 0.8;
+    opacity: 0.6;
 }
 
 #testgantt div:not(.milestone) .result{
@@ -99,10 +103,11 @@
     float: left;
     position: relative;
     top: 7px;
-    border-radius: 4px;
+    border-radius: 6px;
     border:double;
+    border-color:black;
     margin: 0 5px 0 0;
-    opacity: 0.6;
+    opacity: 0.9;
 }
 
 /*#testgantt .milestone .bubble {*/
@@ -118,4 +123,30 @@
     filter:alpha(opacity=80);
     -moz-opacity: 0.8;
     opacity: 0.8;
+}
+
+.arrow_box {
+    display: none;
+    position: absolute;
+    padding: 16px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    background: #333;
+    color: #fff;
+}
+
+.arrow_box:after {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    margin-left: -10px;
+    border: solid transparent;
+    border-color: rgba(51, 51, 51, 0);
+    border-bottom-color: #333;
+    border-width: 10px;
+    pointer-events: none;
+    content: " ";
 }

@@ -37,13 +37,13 @@ let startDay = {
         timeScale = [];
         for(let i=0; i < closeDay; i++) {
             let day = Number(i) + 1;
-            timeScale[i] = String(day);
+            timeScale[i] = String(day)+'日';
         }
     }
     
     // #easygantt要素の幅を取得して、scaleを均等に分割する
     const setTimeScaleWidth = () => {
-        clientWidth = document.getElementById('testgantt').clientWidth-70;
+        clientWidth = document.getElementById('testgantt').clientWidth-50;
         let singleTimeScaleWidth =  clientWidth / (startDay.day);
         return singleTimeScaleWidth;
     }
@@ -55,7 +55,7 @@ let startDay = {
         scale[i].insertAdjacentHTML('beforeend', '<div class="hr">')
         for(let j=0; j<timeScale.length; j++) {
             scale[i].insertAdjacentHTML('beforeend',`
-                                        <section style="width: ${width}px;">${timeScale[j]}</section></div>
+                                        <section style="width: ${width}px; font-size:10px;">${timeScale[j]}</section></div>
                                         `);
         }
     }
@@ -82,26 +82,56 @@ let startDay = {
     // tasks.jsの配列をもとに、チャートにバブルを描画する
     const bubbleDOM = (i, j, start, duration, element, width, state) => {
         // 1日あたりのバブルの長さ[px]
-        let widthAboutMin = width;
+        let widthDay = width;
         // 始業からタスク開始までの日数
-        let startTaskMin = start - openingTime;
+        let startTaskDay = start - openingTime;
         if(state == "plan"){
             element.insertAdjacentHTML('beforeend', `
                                        <li><div class="${task[i][j].category}">
-                                       <span class="bubble plan" style="margin-left: ${startTaskMin * widthAboutMin}px;
-                                       width: ${duration * widthAboutMin}px;"></span>
+                                       <span class="bubble plan task" id="bubble-span$[j]" name="${i}:${j}" style="margin-left: ${startTaskDay * widthDay}px;
+                                       width: ${duration * widthDay}px;"></span><p class="arrow_box">${task[i][j].name}<br>${task[i][j].startTime}日〜${task[i][j].endTime}日</p>
                                        ${bubbleData(i,j)}</div></li>
                                        `);
         }else{
             element.insertAdjacentHTML('beforeend', `
                                        <li><div class="${task[i][j].category}">
-                                       <span class="bubble result" style="margin-left: ${startTaskMin * widthAboutMin}px;
-                                       width: ${duration * widthAboutMin}px;"></span>
+                                       <span class="bubble result task" id="bubble-span${j}" name="${i}:${j}" style="margin-left: ${startTaskDay * widthDay}px;
+                                       width: ${duration * widthDay}px;"></span><p class="arrow_box">${task[i][j].name}<br>${task[i][j].startTime}日〜${task[i][j].endTime}日</p>
                                        ${bubbleData(i,j)}</div></li>
                                        `);
         }
         
     }
+
+
+function taskinfo(){
+//    $('span.task').hover(function(){
+//                         $(this).next('p').show();
+//
+//                         },function() {
+//                         $(this).next('p').hide();
+//                         });
+//        var index = $(this).attr('name').split(':');
+//                         alert('i :'+index[0]+'j :'+index[1]);
+//                         var info = task[index[0]][index[1]];
+//                         alert(info.name);
+//
+//                         var element = document.getElementById('bubble-span'+index[1]);
+//                         element.style.position = "absolute";
+//                         document.addEventListener("mousemove",onMouseMove);
+//
+//                         var onMouseMove = function(event){
+//                         var x = event.clientX;
+//                         var y = event.clientY;
+//                         var width = ball.offsetWidth;
+//                         var height = ball.offsetHeight;
+//                         element.style.top = (y-height/2) + "px";
+//                         element.style.left = (x-width/2) + "px";
+//                         }
+                         
+
+    
+}
     
     // task.jsの配列のデータを、「hh:mm-hh:mm タスクの説明」のフォーマットにして返す
     const bubbleData = (i, j) => {
@@ -148,5 +178,8 @@ let startDay = {
                 }
             }
         }
+        taskinfo();
     }
+
+
     

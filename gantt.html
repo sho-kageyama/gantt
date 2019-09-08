@@ -12,7 +12,6 @@
     <div id="test">
         <h1>test</h1>
     </div>
-    <input type="button" id="button" value="jquery-test-dayo-">
         <div class="content" style="margin: 10px 20px;">
             <!-- START: TestGantt.js -->
             <div id="testgantt"></div>
@@ -20,12 +19,14 @@
         </div>
     <script>
         $(function(){
-          alert('test');
+          
+          $('span.task').hover(function(){
+                             $(this).next('p').show();
+                             },function(){
+                             $(this).next('p').hide();
+                             });
         });
-        $('input#button').click(function(){
-            var text = $(this).val();
-            $('div#test').find('h1').text(text);
-        });
+        
     </script>
 </body>
 </html>
