@@ -44,14 +44,13 @@ let startDay = {
     // #easygantt要素の幅を取得して、scaleを均等に分割する
     const setTimeScaleWidth = () => {
         clientWidth = document.getElementById('testgantt').clientWidth-70;
-        console.log('gantWidth :' + clientWidth);
         let singleTimeScaleWidth =  clientWidth / (startDay.day);
         return singleTimeScaleWidth;
     }
     
     // setTimeScaleWidthで取得したひとつあたりのtimeScaleの値に応じたwidthで、時間軸を描画する
     const scaleDOM = (i, width) => {
-        console.log('scaleDOM width :' + width +' : i'+ i);
+        
         let scale = document.querySelectorAll(".scale");
         scale[i].insertAdjacentHTML('beforeend', '<div class="hr">')
         for(let j=0; j<timeScale.length; j++) {
@@ -81,24 +80,32 @@ let startDay = {
     }
     
     // tasks.jsの配列をもとに、チャートにバブルを描画する
-    const bubbleDOM = (i, j, start, duration, element, width) => {
-        console.log('i :' + i+ '/'+'j :' + j +'/'+'start :' + start+'/'+'duration :' + duration+'/'+'element :' + element+'/'+'width :' + width);
-        // 1分あたりのバブルの長さ[px]
+    const bubbleDOM = (i, j, start, duration, element, width, state) => {
+        // 1日あたりのバブルの長さ[px]
         let widthAboutMin = width;
-        console.log('長さ :' +widthAboutMin);
         // 始業からタスク開始までの日数
         let startTaskMin = start - openingTime;
-        console.log('分数　:' + startTaskMin);
-        element.insertAdjacentHTML('beforeend', `
-                                   <li><div class="${task[i][j].category}">
-                                   <span class="bubble" style="margin-left: ${startTaskMin * widthAboutMin}px;
-                                   width: ${duration * widthAboutMin}px;"></span>
-                                   ${bubbleData(i,j)}</div></li>
-                                   `);
+        if(state == "plan"){
+            element.insertAdjacentHTML('beforeend', `
+                                       <li><div class="${task[i][j].category}">
+                                       <span class="bubble plan" style="margin-left: ${startTaskMin * widthAboutMin}px;
+                                       width: ${duration * widthAboutMin}px;"></span>
+                                       ${bubbleData(i,j)}</div></li>
+                                       `);
+        }else{
+            element.insertAdjacentHTML('beforeend', `
+                                       <li><div class="${task[i][j].category}">
+                                       <span class="bubble result" style="margin-left: ${startTaskMin * widthAboutMin}px;
+                                       width: ${duration * widthAboutMin}px;"></span>
+                                       ${bubbleData(i,j)}</div></li>
+                                       `);
+        }
+        
     }
     
     // task.jsの配列のデータを、「hh:mm-hh:mm タスクの説明」のフォーマットにして返す
     const bubbleData = (i, j) => {
+        console.log('i :'+ i +'  j :'+j);
         if(task[i][j].category !== "milest") {
 //            let daytime = task[i][j].endTime - task[i][j].startTime + 1;
 //            data = `<span class="time">
@@ -125,12 +132,19 @@ let startDay = {
                 let createBubble = document.getElementById(`task${i}`);
                 startTimeToMins[i] = [], endTimeToMins[i] = [], durationTimes[i] = [];
                 for(let j=0; j < Object.keys(task[i]).length; j++) {
-                    bubbleDOM(i, j,
-                              task[i][j].startTime,
-                              (task[i][j].endTime+1 - task[i][j].startTime),
-                              createBubble,
-                              timeScaleWidth
-                              );
+                    let k = Number(j)+1;
+                    for(var l in task[i]){
+                        if(task[i][l].id == k){
+                            bubbleDOM(i, l,
+                                      task[i][l].startTime,
+                                      (task[i][l].endTime+1 - task[i][l].startTime),
+                                      createBubble,
+                                      timeScaleWidth,
+                                      task[i][l].state
+                                      );
+                        }
+                    }
+                    
                 }
             }
         }
