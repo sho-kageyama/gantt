@@ -9,8 +9,8 @@ let startDay = {
 }
     
     // 始業時間と就業時間を入力してください(30分単位で入力してください)
-    let openingTime = 1;
-    let closingTime = days;
+    let openingDay = 1;
+    let closingDay = days;
     
     
     // tasks.jsに配列が存在する日の回数分、チャートを表示するdaily-area要素を描画する
@@ -31,7 +31,7 @@ let startDay = {
         }
     }
     
-    // 始業時間と就業時間から、30分区切りでhh:mmというフォーマットに変換する
+    // 始業時間と就業時間から、1日区切りで（day)日というフォーマットに変換する
     const setTimeScale = (open, close) => {
         closeDay = startDay.day;
         timeScale = [];
@@ -72,31 +72,31 @@ let startDay = {
     }
     
     // hhmmのフォーマットの時間を分数にして返す
-    const convertTimesToMins = (time) => {
-        let hour = parseInt(String(time));
-        let min = parseInt(String(time));
-        let sumMins = hour * 60 + min;
-        return sumMins;
-    }
-    
+//    const convertTimesToMins = (time) => {
+//        let hour = parseInt(String(time));
+//        let min = parseInt(String(time));
+//        let sumMins = hour * 60 + min;
+//        return sumMins;
+//    }
+
     // tasks.jsの配列をもとに、チャートにバブルを描画する
     const bubbleDOM = (i, j, start, duration, element, width, state) => {
         // 1日あたりのバブルの長さ[px]
         let widthDay = width;
         // 始業からタスク開始までの日数
-        let startTaskDay = start - openingTime;
+        let startTaskDay = start - openingDay;
         if(state == "plan"){
             element.insertAdjacentHTML('beforeend', `
                                        <li><div class="${task[i][j].category}">
-                                       <span class="bubble plan task" id="bubble-span$[j]" name="${i}:${j}" style="margin-left: ${startTaskDay * widthDay}px;
-                                       width: ${duration * widthDay}px;"></span><p class="arrow_box">${task[i][j].name}<br>${task[i][j].startTime}日〜${task[i][j].endTime}日</p>
+                                       <span class="bubble task-plan" id="bubble-span$[j]" name="${i}:${j}" style="margin-left: ${startTaskDay * widthDay}px;
+                                       width: ${duration * widthDay}px;"></span><p class="arrow_box" style="margin-left: ${startTaskDay * widthDay}px;">${task[i][j].name}<br>${task[i][j].startTime}日〜${task[i][j].endTime}日</p>
                                        ${bubbleData(i,j)}</div></li>
                                        `);
         }else{
             element.insertAdjacentHTML('beforeend', `
                                        <li><div class="${task[i][j].category}">
-                                       <span class="bubble result task" id="bubble-span${j}" name="${i}:${j}" style="margin-left: ${startTaskDay * widthDay}px;
-                                       width: ${duration * widthDay}px;"></span><p class="arrow_box">${task[i][j].name}<br>${task[i][j].startTime}日〜${task[i][j].endTime}日</p>
+                                       <span class="bubble task-result" id="bubble-span${j}" name="${i}:${j}" style="margin-left: ${startTaskDay * widthDay}px;
+                                       width: ${duration * widthDay}px;"></span><p class="arrow_box" style="margin-left: ${startTaskDay * widthDay}px;">${task[i][j].name}<br>${task[i][j].startTime}日〜${task[i][j].endTime}日</p>
                                        ${bubbleData(i,j)}</div></li>
                                        `);
         }
@@ -133,20 +133,20 @@ function taskinfo(){
     
 }
     
-    // task.jsの配列のデータを、「hh:mm-hh:mm タスクの説明」のフォーマットにして返す
+    // task.jsの配列のデータを、「[日数]タスクの説明」のフォーマットにして返す
     const bubbleData = (i, j) => {
         console.log('i :'+ i +'  j :'+j);
-        if(task[i][j].category !== "milest") {
 //            let daytime = task[i][j].endTime - task[i][j].startTime + 1;
 //            data = `<span class="time">
 //            ${String(daytime)}日間
 //            </span>
-            data = `
-            <span class="bubble-span">${task[i][j].name}</span>`;
-        } else {
-            data = `<span class="time">${String(task[i][j].startTime)}</span>
-            <span class="milestone-span">${task[i][j].name}</span>`;
+        let status = task[i][j].state;
+        if(status == "plan"){
+            data = `<span class="bubble-span plan">${task[i][j].name}</span>`;
+        }else{
+            data = `<span class="bubble-span result">${task[i][j].name}</span>`;
         }
+        
         return data
     }
     
@@ -155,7 +155,7 @@ function taskinfo(){
         let startTimeToMins = [], endTimeToMins = [], durationTimes = [];
         for(let i=0; i < Object.keys(task).length; i++) {
             if(task[i][0]) {
-                setTimeScale(openingTime, closingTime);
+                setTimeScale(openingDay, closingDay);
                 timeScaleWidth = setTimeScaleWidth();
                 scaleDOM(i, timeScaleWidth);
                 dateDOM(i);

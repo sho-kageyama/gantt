@@ -7,7 +7,7 @@ let task = [
      name: "Java基礎15問",
      startTime: 1,
      endTime: 3,
-     category: "event",
+     category: "begginer",
      state: "plan"
      },
      // 1ヶ月目のタスクその2
@@ -16,7 +16,7 @@ let task = [
      name: "じゃんけん課題",
      startTime: 4,
      endTime: 6,
-     category: "meeting",
+     category: "middle",
      state: "plan"
      },
      // 1ヶ月目のタスクその3
@@ -25,7 +25,7 @@ let task = [
      name: "電卓課題",
      startTime: 6,
      endTime: 8,
-     category: "dev",
+     category: "begginer",
      state: "plan"
      },
      // 1ヶ月目のタスクその4
@@ -34,7 +34,7 @@ let task = [
      name: "SQL基礎課題",
      startTime: 9,
      endTime: 10,
-     category: "milestone",
+     category: "begginer",
      state: "plan"
      },
      //1ヶ月目のタスクその5
@@ -43,7 +43,7 @@ let task = [
      name: "SpringMVC演習",
      startTime: 11,
      endTime: 13,
-     category: "absence",
+     category: "middle",
      state: "plan"
      },
      // 1ヶ月目のタスクその6
@@ -52,7 +52,7 @@ let task = [
      name: "施設予約管理システム",
      startTime: 14,
      endTime: 28,
-     category: "lecture",
+     category: "inferno",
      state: "plan"
      },
      // 1ヶ月目のタスクその7
@@ -61,25 +61,61 @@ let task = [
      name: "SQL中級課題",
      startTime: 19,
      endTime: 21,
-     category: "other",
+     category: "middle",
      state: "plan"
      },
      //1ヶ月目の実績1
      {
      id : 1,
-     name:"over",
+     name:"res-java",
      startTime:1,
      endTime:4,
-     category:"event",
+     category:"begginer",
      state: "result"
      },
      //1ヶ月目の実績2
      {
      id : 2,
-     name:"over",
+     name:"res-janken",
      startTime:5,
      endTime:7,
-     category:"meeting",
+     category:"middle",
+     state: "result"
+     },
+     //1ヶ月目の実績3
+     {
+     id : 3,
+     name:"res-calcu",
+     startTime:8,
+     endTime:9,
+     category:"begginer",
+     state: "result"
+     },
+     //1ヶ月目の実績4
+     {
+     id : 4,
+     name:"res-sql",
+     startTime:10,
+     endTime:11,
+     category:"begginer",
+     state: "result"
+     },
+     //1ヶ月目の実績5
+     {
+     id : 5,
+     name:"res-spring",
+     startTime:12,
+     endTime:13,
+     category:"middle",
+     state: "result"
+     },
+     //1ヶ月目の実績5
+     {
+     id : 6,
+     name:"res-groupware",
+     startTime:14,
+     endTime:15,
+     category:"inferno",
      state: "result"
      },
      ],
