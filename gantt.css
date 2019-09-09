@@ -6,9 +6,10 @@
     font-family: 'hiragino kaku gothic pro', meiryo;
     width:75%;
     background:rgba(255,255,255,0.4);
-    border-radius: 10px;
+    border-radius: 2px;
     padding: 10px;
-    border:dashed;
+    border-top:double;
+    border-bottom:double;
     border-color:rgba(0,0,0,0.6);
 }
 
@@ -16,6 +17,7 @@
     font-size: 14px;
     font-weight: 600;
     color: #3e3e3e;
+    margin-left:48%;
 }
 
 #testgantt .daily-area {
@@ -59,7 +61,6 @@
     margin: 20px 0 0 0;
     text-align: left;
     list-style-type: none;
-    z-index:0;
 }
 
 #testgantt .data li {
@@ -135,7 +136,6 @@
     border-radius: 8px;
     background: black;
     color: #fff;
-    z-index:9998;
 }
 
 .arrow_box:after {
@@ -145,7 +145,6 @@
     width: 0;
     height: 0;
     margin-left: -10px;
-    z-index:9999;
     border: solid transparent;
     border-color: rgba(250, 215, 235, 0.1);
     border-bottom-color: black;
@@ -155,8 +154,9 @@
 }
 
 span.bubble-span.plan{
-    color:black;
+    color:#001e43;
 }
 span.bubble-span.result{
-    color:#3e3e3e;
+    color:#6c272d;
 }
+

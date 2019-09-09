@@ -60,7 +60,7 @@ let startDay = {
         }
     }
     
-    // startDayの値をmm/dd(w)のフォーマットにして描画する
+    // startDayの値を年月のフォーマットにして描画する
     const dateDOM = (i) => {
         let taskDay = new Date(startDay.year, startDay.month -1, startDay.day + i);
         let y = taskDay.getFullYear();
@@ -89,14 +89,14 @@ let startDay = {
             element.insertAdjacentHTML('beforeend', `
                                        <li><div class="${task[i][j].category}">
                                        <span class="bubble task-plan" id="bubble-span$[j]" name="${i}:${j}" style="margin-left: ${startTaskDay * widthDay}px;
-                                       width: ${duration * widthDay}px;"></span><p class="arrow_box" style="margin-left: ${startTaskDay * widthDay}px;">${task[i][j].name}<br>${task[i][j].startTime}日〜${task[i][j].endTime}日</p>
+                                       width: ${duration * widthDay}px;"></span><p class="arrow_box" style="margin-left: ${startTaskDay * widthDay}px; z-index:200;">${task[i][j].name}<br>${task[i][j].startTime}日〜${task[i][j].endTime}日</p>
                                        ${bubbleData(i,j)}</div></li>
                                        `);
         }else{
             element.insertAdjacentHTML('beforeend', `
                                        <li><div class="${task[i][j].category}">
                                        <span class="bubble task-result" id="bubble-span${j}" name="${i}:${j}" style="margin-left: ${startTaskDay * widthDay}px;
-                                       width: ${duration * widthDay}px;"></span><p class="arrow_box" style="margin-left: ${startTaskDay * widthDay}px;">${task[i][j].name}<br>${task[i][j].startTime}日〜${task[i][j].endTime}日</p>
+                                       width: ${duration * widthDay}px;"></span><p class="arrow_box" style="margin-left: ${startTaskDay * widthDay}px; z-index:200;">${task[i][j].name}<br>${task[i][j].startTime}日〜${task[i][j].endTime}日</p>
                                        ${bubbleData(i,j)}</div></li>
                                        `);
         }
