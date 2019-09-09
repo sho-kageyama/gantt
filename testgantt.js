@@ -43,7 +43,7 @@ let startDay = {
     
     // #easygantt要素の幅を取得して、scaleを均等に分割する
     const setTimeScaleWidth = () => {
-        clientWidth = document.getElementById('testgantt').clientWidth-50;
+        clientWidth = document.getElementById('testgantt').clientWidth-75;
         let singleTimeScaleWidth =  clientWidth / (startDay.day);
         return singleTimeScaleWidth;
     }

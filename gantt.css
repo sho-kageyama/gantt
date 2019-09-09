@@ -51,7 +51,7 @@
     color: #3e3e3e;
     font-size: 14px;
     font-weight: lighter;
-    border-left: 1px dashed rgba(32,47,85,0.8);
+    border-left: 1px solid rgba(32,47,85,0.4);
     height: 100%
 }
 
@@ -64,7 +64,7 @@
 }
 
 #testgantt .data li {
-    margin: 0 0 2px 0;
+    margin: 0 0 10px 0;
     line-height: 30px;
     height: 20px;
     display: block;
@@ -72,6 +72,7 @@
     position: relative;
     background:none;
     white-space: nowrap;
+    border-bottom:1px dashed rgba(0,0,0,0.2);
 }
 
 #testgantt .data li .time {
