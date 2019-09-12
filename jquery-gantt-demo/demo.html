@@ -4,18 +4,27 @@
 <title>Gantt Demo</title>
 <meta charset="UTF-8">
 <link href="css/style.css" type="text/css" rel="stylesheet">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="js/jquery.fn.gantt.js"></script>
 <style type="text/css">
-    
+    .line{
+    position: absolute;
+    border-top: solid 1px #FF4981;
+    -moz-transform-origin:0% 0%;
+    -webkit-transform-origin:0% 0%;
+    transform-origin:0% 0%;
+    float: left;
+}
 </style>
 </head>
 <body>
 <div class="contain">
     <div class="gantt"></div>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
 <script src="js/gantt.prott.js"></script>
 <script src="js/testdata.js"></script>
+<script src="js/jquery.fn.gantt.js"></script>
+
 </body>
 </html>

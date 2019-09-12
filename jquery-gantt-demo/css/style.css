@@ -21,7 +21,7 @@
 
 .fn-gantt {
     width: 100%;
-    background:rgba(255,255,255,0.6);
+    background:rgba(0,0,0,0.2);
 }
 
 .fn-gantt *,
@@ -43,6 +43,7 @@
     height: 24px;
     line-height: 24px;
     margin: 0;
+    background:rgba(250,215,135,0.2);
 }
 
 
@@ -75,7 +76,7 @@
     float: left;
     height: 24px;
     width: 50%;
-    background-color: #f6f6f6;
+    background:none;
 }
 
 .fn-gantt .leftPanel .desc .fn-label{
@@ -95,7 +96,7 @@
 }
 
 .fn-gantt .leftPanel .spacer {
-    background-color: #f6f6f6;
+    background-color:none;
     width: 100%;
 }
 
@@ -437,5 +438,15 @@
 
 .row:after {
     clear: both;
+}
+
+
+.line{
+    position: absolute;
+    border-top: solid 1px #FF4981;
+    -moz-transform-origin:0% 0%;
+    -webkit-transform-origin:0% 0%;
+    transform-origin:0% 0%;
+    float: left;
 }
 

@@ -949,10 +949,11 @@
 
             // **Progress Bar**
             // Return an element representing a progress of position within the entire chart
-            createProgressBar: function (label, desc, classNames, dataObj) {
+            createProgressBar: function (label, desc, classNames, dataObj,i) {
                 label = label || "";
-                var bar = $('<div class="bar"><div class="fn-label">' + label + '</div></div>')
+                var bar = $('<div class="bar"><div id="progressbar-'+i+'" class="fn-label">' + label + '</div></div>')
                         .data("dataObj", dataObj);
+                console.log('loop :' + i);
                 if (desc) {
                     bar
                       .mouseenter(function (e) {
@@ -1019,11 +1020,12 @@
                         return "";
                     }
                 };
+                var loop = 0;
                 // Loop through the values of each data element and set a row
                 $.each(element.data, function (i, entry) {
                     if (i >= element.pageNum * settings.itemsPerPage &&
                         i < (element.pageNum * settings.itemsPerPage + settings.itemsPerPage)) {
-
+                    	
                         $.each(entry.values, function (j, day) {
                             var _bar;
                             var from, to, cFrom, cTo, dFrom, dTo, dl, dp;
@@ -1040,7 +1042,8 @@
                                 dl = Math.floor((cTo - cFrom) / cellWidth) + 1;
                                 dp = 100 * (cellWidth * dl - 1) / dataPanelWidth;
                                 
-                                _bar = core.createProgressBar(day.label, day.desc, day.customClass, day.dataObj);
+                                
+                                _bar = core.createProgressBar(day.label, day.desc, day.customClass, day.dataObj,loop);
 
                                 // find row
                                 topEl = $(element).find("#rowheader" + i);
@@ -1066,7 +1069,7 @@
                                 dl = Math.round((cTo - cFrom) / cellWidth) + 1;
                                 dp = 100 * (cellWidth * dl - 1) / dataPanelWidth;
 
-                                _bar = core.createProgressBar(day.label, day.desc, day.customClass, day.dataObj);
+                                _bar = core.createProgressBar(day.label, day.desc, day.customClass, day.dataObj, loop);
 
                                 // find row
                                 topEl = $(element).find("#rowheader" + i);
@@ -1104,7 +1107,7 @@
                                 dl = Math.round((cTo - cFrom) / cellWidth) + 1;
                                 dp = 100 * (cellWidth * dl - 1) / dataPanelWidth;
 
-                                _bar = core.createProgressBar(day.label, day.desc, day.customClass, day.dataObj);
+                                _bar = core.createProgressBar(day.label, day.desc, day.customClass, day.dataObj,loop);
 
                                 // find row
                                 topEl = $(element).find("#rowheader" + i);
@@ -1129,7 +1132,7 @@
                                 dl = Math.round((dTo - dFrom) / UTC_DAY_IN_MS) + 1;
                                 dp = 100 * (cellWidth * dl - 1) / dataPanelWidth;
 
-                                _bar = core.createProgressBar(day.label, day.desc, day.customClass, day.dataObj);
+                                _bar = core.createProgressBar(day.label, day.desc, day.customClass, day.dataObj,loop);
 
                                 // find row
                                 topEl = $(element).find("#rowheader" + i);
@@ -1148,9 +1151,11 @@
                                 var gray = invertColor(_bar.css('backgroundColor'));
                                 $l.css("color", gray);
                             }
+                            loop += 1;
                         });
 
                     }
+                    
                 });
             },
             // **Navigation**
