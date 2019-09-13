@@ -76,7 +76,7 @@ let sourcedata = [ {
 	desc : "java基礎実績",
 	values : [ {
 		from : "2019-09-2",
-		to : "2019-09-06",
+		to : "2019-09-03",
 		label : "result",
 		customClass : "ganttOrange"
 	} ]
@@ -87,8 +87,8 @@ let sourcedata = [ {
 	name : "",
 	desc : "janken実績",
 	values : [ {
-		from : "2019-09-09",
-		to : "2019-09-11",
+		from : "2019-09-04",
+		to : "2019-09-05",
 		label : "result",
 		customClass : "ganttblue"
 	} ]

@@ -1,7 +1,7 @@
 .gantt {
     width: 100%;
     margin: 20px auto;
-    border: 6px double #ddd;
+    border: 6px double rgba(0,30,67,0.5);
     position: relative;
 -webkit-border-radius: 6px;
    -moz-border-radius: 6px;
@@ -21,7 +21,7 @@
 
 .fn-gantt {
     width: 100%;
-    background:rgba(0,0,0,0.2);
+    background:rgba();
 }
 
 .fn-gantt *,
@@ -43,7 +43,7 @@
     height: 24px;
     line-height: 24px;
     margin: 0;
-    background:rgba(250,215,135,0.2);
+    background:rgba(0,30,67,0.8);
 }
 
 
@@ -61,11 +61,12 @@
 .fn-gantt .leftPanel .fn-label {
     display: inline-block;
     margin: 0 0 0 5px;
-    color: #484A4D;
+    color: white;
     width: 110px;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
+   
 }
 
 .fn-gantt .leftPanel .row {
@@ -76,13 +77,15 @@
     float: left;
     height: 24px;
     width: 50%;
-    background:none;
+
 }
 
 .fn-gantt .leftPanel .desc .fn-label{
+	color:white;
 	font-style:italic;
     font-size:12px;
     margin-left:25px;
+   
 }
 
 
@@ -112,18 +115,20 @@
 .fn-gantt .dataPanel {
     margin-left: 0;
     outline: 1px solid #DDD;
-    /* TODO: Replace image with gradient?
+     background:rgba(0,30,67,0.9);
     background-size: 24px 24px;
-    background-image: linear-gradient(to left, rgba(221, 221, 221, 0.7) 1px, transparent 1px), linear-gradient(to top, rgba(221, 221, 221, 0.7) 1px, transparent 1px);
-    */
-    background-image: url(../img/grid.png);
+    background-image: linear-gradient(to left, rgba(255, 255, 255, 0.7) 1px, transparent 1px), linear-gradient(to top, rgba(255, 255, 255, 0.7) 1px, transparent 1px);
+    /*.grid-imagepattern
+    background-ima-ge: url(../img/grid.png);
     background-repeat: repeat;
+    */
     position: relative;
 }
 
 .fn-gantt .row.header {
     margin-right: -1px;
     width: 100%;
+    
 }
 
 .fn-gantt .day, .fn-gantt .date {
@@ -134,34 +139,36 @@
     border-right: 1px solid #DDD;
     border-bottom: 1px solid #DDD;
     font-size: 11px;
-    color: #484a4d;
-   
+    color: white;
+ 
     text-align: center;
 }
 
 .fn-gantt .sa, .fn-gantt .sn, .fn-gantt .wd {
     height: 24px;
     text-align: center;
+    color:whtie;
+    
 }
 
 .fn-gantt .sa, .fn-gantt .sn {
     color: white;
-    background-color: #ea5550;
+    background-color: rgba(239,133,125,0.6);
     text-align: center;
 }
 
 .fn-gantt .wd {
-    background-color: #f6f6f6;
+      background:rgba(0,30,67,0.9);
     text-align: center;
 }
 
 .fn-gantt .holiday {
-    background-color: rgba(250,215,235,0.8);
+    background:red;
     height: 24px;
 }
 
 .fn-gantt .today {
-    background-color: #fff8da;
+    background:rgba(0,30,67,0.6);
     height: 24px;
     font-weight: bold;
     text-align: center;
@@ -173,11 +180,10 @@
     border-right: 1px solid #DDD;
     border-bottom: 1px solid #DDD;
     height: 24px;
-    background-color: #f6f6f6;
+    background-color: rgba(0,30,67,0.9);
     font-weight: bold;
     font-size: 11px;
-    color: #484a4d;
-    text-shadow: 0 0 8px gray, 0 0 15px gray;
+    color: white;
     text-align: center;
 }
 
@@ -247,7 +253,7 @@
 
 .fn-gantt .bottom {
     clear: both;
-    background-color: rgba(255,255,255,0.4);
+    background-color: rgba(0,30,67,0.8);
     width: 100%;
 }
 .fn-gantt .navigate {
@@ -290,7 +296,7 @@
 .fn-gantt .navigate .nav-slider-bar {
     width: 155px;
     height: 6px;
-    background-color: #838688;
+    background-color: white;
     margin: 8px 0 0 0;
 -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.6) inset;
    -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.6) inset;
@@ -304,6 +310,7 @@
     width: 17px;
     height: 60px;
     background: url(../img/slider_handle.png) center center no-repeat;
+    color:white;
     left: 0;
     top: 0;
     margin: -26px 0 0 0;
@@ -317,7 +324,7 @@
 }
 
 .fn-gantt .navigate .page-number span {
-    color: #666666;
+    color: white;
     margin: 0 6px;
     height: 20px;
     line-height: 20px;
@@ -448,5 +455,6 @@
     -webkit-transform-origin:0% 0%;
     transform-origin:0% 0%;
     float: left;
+    z-index:9999;
 }
 

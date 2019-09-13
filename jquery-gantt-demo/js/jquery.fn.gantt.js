@@ -951,7 +951,7 @@
             // Return an element representing a progress of position within the entire chart
             createProgressBar: function (label, desc, classNames, dataObj,i) {
                 label = label || "";
-                var bar = $('<div class="bar"><div id="progressbar-'+i+'" class="fn-label">' + label + '</div></div>')
+                var bar = $('<div id="progressbar-'+i+'" class="bar"><div class="fn-label">' + label + '</div></div>')
                         .data("dataObj", dataObj);
                 console.log('loop :' + i);
                 if (desc) {

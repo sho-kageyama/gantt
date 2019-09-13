@@ -31,28 +31,23 @@
 });
 
  function linePrott(){
-	 
-	var elements = [];
+	var x =[];
+	var y = [];
 	 for(var i in sourcedata){
 		 var element = document.getElementById('progressbar-'+i);
-		 var cordinate = element.getBoundingClientRect();
-		 console.log('absolute top :'+cordinate.top + window.pageYOffset + '\nabsolute left :' + cordinate.left + window.pageXOffset);
-		 elements.push(cordinate);
+		 y.push(Number(element.style.top.replace('px','')));
+		 x.push(Number(element.style.left.replace('px','')) + element.getBoundingClientRect().width);
 	 }
-	 var top = elements[0].top + window.pageYOffset;
-	 var left = elements[0].left + window.pageXOffset;
-	 var top2 = elements[1].top + window.pageYOffset;
-	 var left2 = elements[1].left + window.pageXOffset;
-	 
-	 console.log(elements[0] +':'+elements[1]);
-	 DrawLine({
-			x1: top,
-			y1: left,
-			x2: top2,
-			y2: left2,
-		});
-	 
-	 console.log(elements);
+	
+	 for(var i = 0;i< sourcedata.length-1;i++){
+		 var l = Number(i)+1;
+		 DrawLine({
+			 x1:x[i],
+			 y1:y[i],
+			 x2:x[l],
+			 y2:y[l]
+		 });
+	 }
  }
  
  function DrawLine(params) {
@@ -62,10 +57,10 @@
 	            , y1: 0
 	            , x2: 0
 	            , y2: 0
-	            , line_style: "solid"
-	            , line_color: "#000"
+	            , line_style: "dashed"
+	            , line_color: "white"
 	            , line_width: "1px"
-	            , parent: $("div.bar")
+	            , parent: $("div.dataPanel")
 	            , callback: function(){}
 	  }, params);
 	  if(param.x1 < param.x2){
