@@ -62,7 +62,7 @@
 	            , x2: 0
 	            , y2: 0
 	            , line_style: "dashed"
-	            , line_color: "white"
+	            , line_color: "black"
 	            , line_width: "1px"
 	            , parent: $("div.dataPanel")
 	            , callback: function(){}
