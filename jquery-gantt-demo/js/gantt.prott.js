@@ -7,9 +7,9 @@
                 source: sourcedata,
                 navigate: "scroll",
                 scale: "days",
-                minScale: "days",
+                minScale: "hours",
                 maxScale: "months",
-                itemsPerPage: 15,
+                itemsPerPage: 10,
                 months : ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
                 dow : ["日", "月", "火", "水", "木", "金", "土"],
                 onItemClick: function(data) {
@@ -57,8 +57,8 @@
 	            , y1: 0
 	            , x2: 0
 	            , y2: 0
-	            , line_style: "dashed"
-	            , line_color: "white"
+	            , line_style: "solid"
+	            , line_color: "black"
 	            , line_width: "1px"
 	            , parent: $("div.dataPanel")
 	            , callback: function(){}
