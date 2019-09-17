@@ -108,6 +108,7 @@
     background-image: url(../img/grid.png);
     background-repeat: repeat;
     position: relative;
+    z-index:0;
 }
 
 .fn-gantt .row.header {
@@ -180,12 +181,13 @@
 -webkit-border-radius: 4px;
    -moz-border-radius: 4px;
         border-radius: 4px;
+        
 }
 
 .fn-gantt .bar {
     background-color: #D0E4FD;
-    height: 18px;
-    margin: 0 3px 3px 0;
+    height: 19px;
+    margin: 0 2px 32x 0;
     position: absolute;
     z-index: 10;
     text-align: center;
@@ -195,6 +197,8 @@
 -webkit-border-radius: 3px;
    -moz-border-radius: 3px;
         border-radius: 3px;
+        
+       
 }
 
 .fn-gantt .bar .fn-label {
@@ -208,13 +212,16 @@
     color: #414B57 !important;
     text-align: center;
     font-size: 11px;
+    
 }
 
 .fn-gantt .ganttRed {
     background-color: #F9C4E1;
+
 }
 .fn-gantt .ganttRed .fn-label {
     color: #78436D !important;
+    
 }
 
 .fn-gantt .ganttGreen {
@@ -438,3 +445,14 @@
     float: left;
     z-index:9999;
 }
+
+.box{
+    margin-left: 0;
+    background-color:rgba(250,215,235,0.8);
+   background-size: 24px 24px;
+    background-image: linear-gradient(to left, rgba(225, 225, 225, 0.7) 1px, transparent 1px), linear-gradient(to top, rgba(225, 225, 225, 0.7) 1px, transparent 1px);
+    position: absolute;
+     outline: 1px solid #DDO;
+    z-index:1;
+}
+

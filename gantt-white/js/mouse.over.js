@@ -186,7 +186,7 @@ function panelXY(e, that){
 	    .addClass("box")
 	    .css({
 	      "left": param.left + 185,
-	      "top": 96,
+	      "top": -0.2,
 	      "height":322,
 	      "width": 48,
 	    });

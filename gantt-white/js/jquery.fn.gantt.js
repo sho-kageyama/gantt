@@ -978,6 +978,11 @@
                     e.stopPropagation();
                     settings.onItemClick($(this).data("dataObj"));
                 });
+                bar.mouseover(function(e){
+                	settings.onMouseOver(bar[0], e);
+                });
+                
+               
                 return bar;
             },
 
