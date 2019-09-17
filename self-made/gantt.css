@@ -1,0 +1,163 @@
+*{
+    margin:0;
+    padding:0;
+}
+#testgantt {
+    font-family: 'hiragino kaku gothic pro', meiryo;
+    width:75%;
+    background:rgba(255,255,255,0.4);
+    border-radius: 2px;
+    padding: 10px;
+    border-top:double;
+    border-bottom:double;
+    border-color:rgba(0,0,0,0.6);
+}
+
+#testgantt span[id *= "date"] {
+    font-size: 14px;
+    font-weight: 600;
+    color: #3e3e3e;
+    margin-left:48%;
+}
+
+#testgantt .daily-area {
+    border-top: 0.1px solid black;
+    position: relative;
+}
+
+#testgantt .hr {
+    border-top: 1px solid rgba(250,250,250,0.6);
+}
+/* バブルの色 */
+#testgantt .begginer span.task-plan, .nav.dev { background-color: #0068b7;}
+#testgantt .middle span.task-plan, .nav.result { background-color: #006948; }
+#testgantt .inferno span.task-plan, .nav.meeting { background-color: #800000;}
+#testgantt .begginer span.task-result, .nav.event { background-color: #68a4d9; }
+#testgantt .middle span.task-result, .nav.absence { background-color: #bdb76b; }
+#testgantt .inferno span.task-result, .nav.other { background-color: #a52a2a; }
+#testgantt .milestone .bubble { background-color: navy; }
+
+#testgantt .scale {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+#testgantt .scale section {
+    float: left;
+    /* border-leftの線の太さを考慮して60 - 1する */
+    text-align: center;
+    background-color: none;
+    color: #3e3e3e;
+    font-size: 14px;
+    font-weight: lighter;
+    border-left: 1px solid rgba(32,47,85,0.4);
+    height: 100%
+}
+
+#testgantt .data {
+    font-size: 12px;
+    padding: 0;
+    margin: 20px 0 0 0;
+    text-align: left;
+    list-style-type: none;
+}
+
+#testgantt .data li {
+    margin: 0 0 10px 0;
+    line-height: 30px;
+    height: 20px;
+    display: block;
+    clear: both;
+    position: relative;
+    background:none;
+    white-space: nowrap;
+    border-bottom:1px dashed rgba(0,0,0,0.2);
+}
+
+#testgantt .data li .time {
+    color: white;
+}
+
+#testgantt .data li .label {
+    font-weight: lighter;
+    padding-left: 5px;
+    line-height: 15px;
+    color: white;
+    white-space: nowrap
+}
+
+#testgantt div:not(.milestone) .task-plan{
+    height: 15px;
+    display: block;
+    float: left;
+    position: relative;
+    top: 7px;
+    border:1px solid black;
+    border-radius: 1px;
+    margin: 0 5px 0 0;
+    opacity: 0.8;
+}
+
+#testgantt div:not(.milestone) .task-result{
+    height: 10px;
+    display: block;
+    float: left;
+    position: relative;
+    top: 7px;
+    border-radius: 6px;
+    border:double;
+    border-color:black;
+    margin: 0 5px 0 0;
+    opacity: 0.9;
+}
+
+/*#testgantt .milestone .bubble {*/
+/*    border-style: solid;*/
+/*    border-width: 0 15px 22px 15px;*/
+/*    border-color: transparent transparent #fc3232 transparent;*/
+/*    opacity: 0.7;*/
+/*    transform: translateY(-50%) translateX(-50%);*/
+/*    -webkit-transform: translateY(-50%) translateX(-50%);*/
+/*}*/
+
+#testgantt li:hover {
+    filter:alpha(opacity=80);
+    -moz-opacity: 0.8;
+    opacity: 0.8;
+}
+
+.arrow_box {
+    display: none;
+    position: absolute;
+    padding: 16px;
+    margin-top:25px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    background: black;
+    color: #fff;
+}
+
+.arrow_box:after {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    margin-left: -10px;
+    border: solid transparent;
+    border-color: rgba(250, 215, 235, 0.1);
+    border-bottom-color: black;
+    border-width: 10px;
+    pointer-events: none;
+    content: " ";
+}
+
+span.bubble-span.plan{
+    color:#001e43;
+}
+span.bubble-span.result{
+    color:#6c272d;
+}
+

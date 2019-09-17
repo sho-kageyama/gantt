@@ -7,11 +7,7 @@
                 source: sourcedata,
                 navigate: "scroll",
                 scale: "days",
-<<<<<<< HEAD
-                minScale: "hours",
-=======
                 minScale: "days",
->>>>>>> origin/myhouse
                 maxScale: "months",
                 itemsPerPage: 10,
                 months : ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
@@ -37,13 +33,10 @@
  function linePrott(){
 	var x =[];
 	var y = [];
-<<<<<<< HEAD
-=======
      
      var dataPanel = $('.dataPanel')[0];
      console.log(dataPanel);
      
->>>>>>> origin/myhouse
 	 for(var i in sourcedata){
 		 var element = document.getElementById('progressbar-'+i);
 		 y.push(Number(element.style.top.replace('px','')));
@@ -68,13 +61,8 @@
 	            , y1: 0
 	            , x2: 0
 	            , y2: 0
-<<<<<<< HEAD
-	            , line_style: "solid"
-	            , line_color: "black"
-=======
 	            , line_style: "dashed"
-	            , line_color: "white"
->>>>>>> origin/myhouse
+	            , line_color: "black"
 	            , line_width: "1px"
 	            , parent: $("div.dataPanel")
 	            , callback: function(){}
@@ -110,11 +98,5 @@
 	      "border-top-width": param.line_width,
 	    });
 	  $(param.parent).append(line);
-<<<<<<< HEAD
-	  console.log('DrawLine');
 	}
  
-=======
-	}
- 
->>>>>>> origin/myhouse
